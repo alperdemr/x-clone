@@ -1,21 +1,20 @@
 "use client";
 
-import { Post } from "@prisma/client";
+import { Post, User } from "@prisma/client";
 import PostItem from "./PostItem";
-import { PostWithUser } from "@/app/types";
+import { FullPostType } from "@/app/types";
 
 interface PostFeedProps {
-
-    posts: PostWithUser[];
-    userId: string;
-    
+  posts: FullPostType[];
+  userId: string;
+  currentUser: User;
 }
 
-const PostFeed: React.FC<PostFeedProps> = ({ posts, userId }) => {
+const PostFeed: React.FC<PostFeedProps> = ({ posts, userId,currentUser }) => {
   return (
     <>
       {posts.map((post) => (
-        <PostItem key={post.id} data={posts} userId={userId} />
+        <PostItem key={post.id} data={post} userId={userId} currentUser={currentUser} />
       ))}
     </>
   );

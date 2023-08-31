@@ -1,7 +1,5 @@
-import { Prisma } from "@prisma/client";
+import { User,Post } from "@prisma/client";
 
-
-export type PostWithUser = Prisma.PostGetPayload<{
-    include: { user: true };
-}>;
-
+export type FullPostType = Post & {
+  user: User;
+};
