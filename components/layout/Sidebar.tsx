@@ -10,10 +10,15 @@ import { BiLogOut } from "react-icons/bi";
 import SidebarItem from "./SidebarItem";
 import SidebarButton from "./SidebarButton";
 import { signOut, useSession } from "next-auth/react";
+import { User } from "@prisma/client";
 
-const Sidebar = () => {
-  const { data: session } = useSession();
+interface SidebarProps {
+  currentUser: User;
+}
 
+const Sidebar:React.FC<SidebarProps> = ({
+  currentUser
+}) => {
   const pathname = usePathname();
   const items = [
     {
@@ -31,8 +36,8 @@ const Sidebar = () => {
     {
       icon: FaUser,
       label: "Profile",
-      href: `/users/123`,
-      active: pathname === "/users/123",
+      href: `/users/${currentUser?.id}`,
+      active: pathname === `/users/${currentUser?.id}`,
     },
   ];
 
@@ -49,7 +54,7 @@ const Sidebar = () => {
               icon={item.icon}
             />
           ))}
-          {session && (
+          {currentUser && (
             <SidebarItem
               label="Logout"
               icon={BiLogOut}
