@@ -1,25 +1,21 @@
 import { prisma } from "../libs/prismadb";
 import getCurrentUser from "./getCurrentUser";
 
-const getPosts = async () => {
+const getPost = async (postId: string) => {
   const currentUser = await getCurrentUser();
   if (!currentUser?.id) {
     return [];
   }
   try {
-    const posts = await prisma.post.findMany({
+    const post = await prisma.post.findUnique({
       where: {
-        userId: currentUser.id,
-      },
-      include: {
-        user: true,
-        comments:true
+        id: postId,
       },
     });
-    return posts;
+    return post;
   } catch (error: any) {
     return [];
   }
 };
 
-export default getPosts;
+export default getPost;

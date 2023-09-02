@@ -1,6 +1,6 @@
 "use client";
 
-import { Post, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import PostItem from "./PostItem";
 import { FullPostType } from "@/app/types";
 
