@@ -13,7 +13,7 @@
 
 Follow these steps to install and set up the X-Clone project on your local machine:
 
-1. Clone this repository: `git clone https://github.com/yourusername/x-clone.git`
+1. Clone this repository: `git clone https://github.com/alperdemr/x-clone.git`
 2. Navigate to the project directory: `cd x-clone`
 3. Install dependencies: `npm install`
 4. Create a `.env` file in the root directory and add the following environment variables:
